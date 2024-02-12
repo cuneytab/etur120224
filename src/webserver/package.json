@@ -9,5 +9,7 @@
   "author": "",
   "license": "ISC",
   "type": "module",
-  "dependencies": {}
+  "dependencies": {
+    "fastify": "^4.26.1"
+  }
 }

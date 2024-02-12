@@ -3,7 +3,9 @@ const fastify = Fastify({
   logger: true,
 });
 import { getAllCustomers, createCustomer, deleteCustomer, readCustomer } from '../services/customers.js';
-
+createCustomer('ETUR-CN-34623', 'Marry Jane', 'Jake Sully', 'j.k@planb.com', 'developer', 'm.j@planb.com');
+createCustomer('ETUR-CN-34624', 'Marry Jane', 'Jake Sully', 'j.k@planb.com', 'developer', 'm.j@planb.com');
+createCustomer('ETUR-CN-34625', 'Marry Jane', 'Jake Sully', 'j.k@planb.com', 'developer', 'm.j@planb.com');
 // Get all customers
 fastify.get("/getCustomers", async function handler(request, reply) {
     const customers = getAllCustomers();
@@ -12,9 +14,11 @@ fastify.get("/getCustomers", async function handler(request, reply) {
 
 // Get Customer By Id
 fastify.get("/getCustomerById/:id", async function handler(request, reply) {
-    const customerId = request.query;
+    const customerId = request.params.id;
     const customer = readCustomer(customerId)
-  return customer;
+    console.log(customer)
+    reply.send(customer);
+  //return customer;
 });
 
 // Create Customer By Id
