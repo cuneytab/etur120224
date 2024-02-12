@@ -5,25 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer overview</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div>
-        <h1>Name</h1>
-        <h1>Kundennummer</h1>
-        <h1>Ansprechpartner</h1>
-        <h2>Name</h2>
-        <h2>E-Mail</h2>
-        <h2>Position</h2>
-        <h1>Allgemeine E-Mail</h1>
-        
-    </div>
-
-    <div>
-
-    </div>
-    
-    <div>
-
-    </div>
+    <div class="card">
+        <div class="infos">
+          <div class="image"></div>
+          <div class="info">
+            <div>
+              <h1 class="name">Plan B.</h1>
+              <p class="function; stats">
+                  <span>
+                      Kundennummer: 323
+                  </span>
+                  <span>
+                      Email: test@example.com
+                  </span>
+              </p>
+            </div>
+            <div class="stats">
+              <p class="flex flex-col">
+                Ansprechpartner
+                <span class="state-value"> John Doe </span>
+              </p>
+              <p class="flex">
+                Email:
+                <span class="state-value">  john.doe@example.com </span>
+              </p>
+              <p class="flex flex-col">
+                Position
+                <span class="state-value"> CEO </span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <button class="request" type="button">Button</button>
+      </div>
 </body>
 </html>
