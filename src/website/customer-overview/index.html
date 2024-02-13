@@ -13,33 +13,31 @@
           <div class="image"></div>
           <div class="info">
             <div>
-              <h1 class="name">Plan B.</h1>
+              Kundenname: <input type="text" id="customerNameInput" />
               <p class="function; stats">
-                  <span>
-                      Kundennummer: 323
-                  </span>
-                  <span>
-                      Email: test@example.com
-                  </span>
+                  Kundennummer: <input type="text" id="customerIDInput" />
+                  Email: <input type="text" id="customerEmailInput" /> 
               </p>
             </div>
             <div class="stats">
               <p class="flex flex-col">
-                Ansprechpartner
-                <span class="state-value"> John Doe </span>
+                Ansprechpartner 
+                <input type="text" id="contactPersonNameInput" class="state-value" />
               </p>
               <p class="flex">
-                Email:
-                <span class="state-value">  john.doe@example.com </span>
+                Email 
+                <input type="text" id="contactPersonEmailInput" class="state-value" />
               </p>
               <p class="flex flex-col">
-                Position
-                <span class="state-value"> CEO </span>
+                Position 
+                <input type="text" id="contactPersonPositionInput" class="state-value" />
               </p>
             </div>
           </div>
         </div>
-        <button class="request" type="button">Button</button>
+        <button class="request" type="button" onclick="createCustomer()">Hinzufügen</button>
       </div>
+
+      <script src="main.js"></script>
 </body>
 </html>
