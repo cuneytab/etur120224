@@ -6,6 +6,7 @@ import { getAllCustomers, createCustomer, deleteCustomer, readCustomer } from '.
 createCustomer('ETUR-CN-34623', 'Marry Jane', 'Jake Sully', 'j.k@planb.com', 'developer', 'm.j@planb.com');
 createCustomer('ETUR-CN-34624', 'Marry Jane', 'Jake Sully', 'j.k@planb.com', 'developer', 'm.j@planb.com');
 createCustomer('ETUR-CN-34625', 'Marry Jane', 'Jake Sully', 'j.k@planb.com', 'developer', 'm.j@planb.com');
+console.log('Test');
 // Get all customers
 fastify.get("/getCustomers", async function handler(request, reply) {
     const customers = getAllCustomers();
