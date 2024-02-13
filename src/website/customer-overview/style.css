@@ -1,6 +1,6 @@
 .card {
     border-radius: 1rem;
-    background-color: rgba(31, 41, 55, 1);
+    background-color: #E8FFD2;
     padding: 1rem;
   }
 
@@ -46,8 +46,10 @@
 
   .stats {
     width: (100% - 0.5rem);
+    border: solid;
     border-radius: 0.5rem;
-    background-color: rgba(255, 255, 255, 1);
+    border-color: #50514F;
+    background-color: #B4ADEA;
     padding: 0.5rem;
     display: flex;
     align-items: center;
@@ -66,20 +68,21 @@
 
   .state-value {
     font-weight: 700;
-    color: rgb(118, 36, 194);
+    color: #50514F;
   }
 
   .request {
     margin-top: 50px;
     width: 100%;
-    border: 1px solid transparent;
+    border: 1px solid;
     border-radius: 0.5rem;
     padding: 0.5rem 1rem;
     font-size: 1rem;
     line-height: 1.5rem;
     transition: all 0.3s ease;
+    background-color: #B4ADEA;
   }
 
   .request:hover {
-    background-color: rgb(118, 36, 194);
+    background-color: #50514F;
   }

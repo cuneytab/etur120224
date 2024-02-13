@@ -13,42 +13,42 @@ function fetchCustomers() {
 }
 
 function createCustomerCard(customer) {
-    const userContainer = document.querySelector('.user__container');
+    const userContainer = document.querySelector('.customers-user__container');
 
     // Erstellen der Nutzerkarte für jeden Kunden
     const userDiv = document.createElement('div');
-    userDiv.className = 'user';
+    userDiv.className = 'customers-user';
 
     // Ähnlich wie Ihr HTML, füllen Sie die Details für jeden Kunden
     userDiv.innerHTML = `
-        <div class="image" style="color: white; padding: 10px">
+        <div class="customers-image" style="color: white; padding: 10px">
             ${customer.customerID}
         </div>
-        <div class="user__content">
-            <div class="text">
-                <span class="name">${customer.customerName}</span>
-                <p class="username">${customer.customerEmail}</p>
+        <div class="customers-user__content">
+            <div class="customers-text">
+                <span class="customers-name">${customer.customerName}</span>
+                <p class="customers-username">${customer.customerEmail}</p>
             </div>
-            <div class="tooltip-container">
-                <div class="tooltip">
-                    <div class="profile">
-                        <div class="user">
-                            <div class="details" style="color: white;">
+            <div class="customers-tooltip-container">
+                <div class="customers-tooltip">
+                    <div class="customers-profile">
+                        <div class="customers-user">
+                            <div class="customers-details" style="color: white;">
                                 ${customer.contactPerson.contactPersonName}
-                                <div class="username">${customer.contactPerson.contactPersonEmail}</div>
-                                <div class="about">${customer.contactPerson.contactPersonPosition}</div>
+                                <div class="customers-username">${customer.contactPerson.contactPersonEmail}</div>
+                                <div class="customers-about">${customer.contactPerson.contactPersonPosition}</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="text">
-                    <a class="icon" href="#">
-                        <div class="layer">
+                <div class="customers-text">
+                    <a class="customers-icon" href="#">
+                        <div class="customers-layer">
                             <span></span>
                             <span></span>
                             <span></span>
                             <span></span>
-                            <span class="tooltipSVG">
+                            <span class="customers-tooltipSVG">
                                 <div style="font-size: small">Kontakt</div>
                             </span>
                         </div>

@@ -2,9 +2,9 @@ const customer = {
   customerID: null,
   customerName: null,
   contactPerson: {
-    personName: null,
-    personEmail: null,
-    personPosition: null,
+    contactPersonName: null,
+    contactPersonEmail: null,
+    contactPersonPosition: null,
   },
   customerEmail: null,
 };
@@ -15,9 +15,9 @@ customers.push({
   customerID: "ETUR-CN-34622",
   customerName: "John Doe",
   contactPerson: {
-    personName: "Some One",
-    personEmail: "someone@planb.com",
-    personPosition: "ceo",
+    contactPersonName: "Some One",
+    contactPersonEmail: "someone@planb.com",
+    contactPersonPosition: "ceo",
   },
   customerEmail: "anemail@planb.com",
 });

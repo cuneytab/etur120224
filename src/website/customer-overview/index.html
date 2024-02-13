@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="getCustomers.js"></script>
     <title>Customer overview</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./customers-overview.css">
 </head>
 <body>
-      <div class="card">
+    <div class="card">
+      <p style="font-weight: 900; font-size: 1.3em;">Kunde erstellen</p>
         <div class="infos">
-          <div class="image"></div>
           <div class="info">
             <div>
               Kundenname: <input type="text" id="customerNameInput" />
@@ -20,17 +22,17 @@
               </p>
             </div>
             <div class="stats">
-              <p class="flex flex-col">
+              <p >
                 Ansprechpartner 
-                <input type="text" id="contactPersonNameInput" class="state-value" />
+                <input type="text" id="contactPersonNameInput"/>
               </p>
-              <p class="flex">
+              <p>
                 Email 
-                <input type="text" id="contactPersonEmailInput" class="state-value" />
+                <input type="text" id="contactPersonEmailInput"/>
               </p>
-              <p class="flex flex-col">
+              <p>
                 Position 
-                <input type="text" id="contactPersonPositionInput" class="state-value" />
+                <input type="text" id="contactPersonPositionInput"/>
               </p>
             </div>
           </div>
@@ -38,14 +40,12 @@
         <button class="request" type="button" onclick="createCustomer()">Hinzufügen</button>
       </div>
 
-      <div>
-        <p>
-          Kundennummer überprüfen 
-          <input type="text" id="verifyCustomerIDFormat" />
-        </p>
-        <p id="result"></p>
-        <button class="request" type="button" onclick="verifyCustomerIDFormat()">Check</button>
+      <div class="customers-card">
+      <p class="customers-title">Kundenübersicht</p>
+      <div class="customers-user__container">
+
       </div>
+    </div>
 
       <script src="main.js"></script>
 </body>
