@@ -5,9 +5,9 @@ function createCustomer() {
         customerID: document.getElementById('customerIDInput').value,
         customerName: document.getElementById('customerNameInput').value,
         contactPerson: {
-            personName: document.getElementById('contactPersonNameInput').value,
-            personEmail: document.getElementById('contactPersonEmailInput').value,
-            personPosition: document.getElementById('contactPersonPositionInput').value,
+            contactPersonName: document.getElementById('contactPersonNameInput').value,
+            contactPersonEmail: document.getElementById('contactPersonEmailInput').value,
+            contactPersonPosition: document.getElementById('contactPersonPositionInput').value,
         },
         customerEmail: document.getElementById('customerEmailInput').value,
     };
