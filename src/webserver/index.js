@@ -18,11 +18,11 @@ console.log('Test');
 const contactPersonSchema = {
   type: 'object',
   properties: {
-    contactPersonName: { type: 'string' },
-    contactPersonEmail: { type: 'string' },
-    contactPersonPosition: { type: 'string' },
+    personName: { type: 'string' },
+    personEmail: { type: 'string' },
+    personPosition: { type: 'string' },
   },
-  required: ['contactPersonName', 'contactPersonEmail', 'contactPersonPosition']
+  required: ['personName', 'personEmail', 'personPosition']
 };
 const customerSchema = {
   schema: {

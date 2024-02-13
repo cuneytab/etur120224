@@ -15,15 +15,15 @@ function createCustomer() {
     console.log(newCustomer);
     
     // Target URL for the POST request
-    var url = 'http://127.0.0.1:3000/createCustomerById';
+    const url = 'http://127.0.0.1:3000/createCustomerById';
 
     // Options for the POST request
-    var options = {
+    const options = {
         method: 'POST', // Request method
         headers: {
             'Content-Type': 'application/json' // Content type
         },
-        body: JSON.parse(newCustomer)
+        body: JSON.stringify(newCustomer)
     };
 
     // Sending the POST request
@@ -32,11 +32,6 @@ function createCustomer() {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Response received:', data);
-            // You can handle the response data here if the request is successful
         })
         .catch(error => {
             console.error('There was a problem with your fetch operation:', error);
