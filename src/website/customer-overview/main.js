@@ -23,7 +23,7 @@ function createCustomer() {
         headers: {
             'Content-Type': 'application/json' // Content type
         },
-        body: newCustomer
+        body: JSON.parse(newCustomer)
     };
 
     // Sending the POST request

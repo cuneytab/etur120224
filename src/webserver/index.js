@@ -79,7 +79,7 @@ fastify.get("/getCustomerById/:id", opts, async function handler(request, reply)
 
 // Create Customer By Id
 fastify.post("/createCustomerById", customerSchema, async function handler(request, reply) {
-  createCustomer(request.body.id, request.body.name, request.body.contactPerson.contactPersonName, request.body.contactPerson.contactPersonEmail, request.body.contactPerson.contactPersonPosition, request.body.customerEmail);
+  createCustomer(request.body.customerID, request.body.customerName, request.body.contactPerson.contactPersonName, request.body.contactPerson.contactPersonEmail, request.body.contactPerson.contactPersonPosition, request.body.customerEmail);
 });
 
 // Delete Customer By Id

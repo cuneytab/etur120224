@@ -6,6 +6,7 @@ function fetchCustomers() {
     fetch('http://localhost:3000/getCustomers')
         .then(response => response.json())
         .then(data => {
+            console.log('DATA', data)
             data.forEach(customer => createCustomerCard(customer));
         })
         .catch(error => console.error('Fehler beim Abrufen der Kunden:', error));
@@ -21,21 +22,21 @@ function createCustomerCard(customer) {
     // Ähnlich wie Ihr HTML, füllen Sie die Details für jeden Kunden
     userDiv.innerHTML = `
         <div class="image" style="color: white; padding: 10px">
-            ${customer.id}
+            ${customer.customerID}
         </div>
         <div class="user__content">
             <div class="text">
-                <span class="name">${customer.name}</span>
-                <p class="username">${customer.email}</p>
+                <span class="name">${customer.customerName}</span>
+                <p class="username">${customer.customerEmail}</p>
             </div>
             <div class="tooltip-container">
                 <div class="tooltip">
                     <div class="profile">
                         <div class="user">
                             <div class="details" style="color: white;">
-                                Kontakt Person Name: ${customer.contactPerson.name}
-                                <div class="username">${customer.contactPerson.email}</div>
-                                <div class="about">${customer.contactPerson.position}</div>
+                                ${customer.contactPerson.contactPersonName}
+                                <div class="username">${customer.contactPerson.contactPersonEmail}</div>
+                                <div class="about">${customer.contactPerson.contactPersonPosition}</div>
                             </div>
                         </div>
                     </div>
