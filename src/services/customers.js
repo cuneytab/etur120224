@@ -92,3 +92,9 @@ export function readCustomer(newCustomerID) {
     return customers[index];
   }
 }
+
+export function verifyCustomerIDFormat(newCustomerID) {
+  const result = checkCustomerIdFormat(newCustomerID);
+  console.log(result);
+  return result;
+}

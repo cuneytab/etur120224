@@ -2,7 +2,7 @@ import Fastify from "fastify";
 const fastify = Fastify({
   logger: true,
 });
-import { getAllCustomers, createCustomer, deleteCustomer, readCustomer } from '../services/customers.js';
+import { getAllCustomers, createCustomer, deleteCustomer, readCustomer, verifyCustomerIDFormat } from '../services/customers.js';
 
 import cors from '@fastify/cors'
 
@@ -75,6 +75,14 @@ fastify.get("/getCustomerById/:id", opts, async function handler(request, reply)
     console.log(customer)
     reply.send(customer);
   //return customer;
+});
+
+// Verify customer ID
+fastify.get("/verifyCustomerId/:id", async function handler(request, reply) {
+  const customerId = request.params.id;
+  const result = verifyCustomerIDFormat(customerId);
+  console.log('webserver result: ' + result);
+  reply.send(result);
 });
 
 // Create Customer By Id

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div class="card">
+      <div class="card">
         <div class="infos">
           <div class="image"></div>
           <div class="info">
@@ -36,6 +36,15 @@
           </div>
         </div>
         <button class="request" type="button" onclick="createCustomer()">Hinzufügen</button>
+      </div>
+
+      <div>
+        <p>
+          Kundennummer überprüfen 
+          <input type="text" id="verifyCustomerIDFormat" />
+        </p>
+        <p id="result"></p>
+        <button class="request" type="button" onclick="verifyCustomerIDFormat()">Check</button>
       </div>
 
       <script src="main.js"></script>
