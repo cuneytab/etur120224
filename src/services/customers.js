@@ -95,6 +95,6 @@ export function readCustomer(newCustomerID) {
 
 export function verifyCustomerIDFormat(newCustomerID) {
   const result = checkCustomerIdFormat(newCustomerID);
-  console.log(result);
+  console.log('CustomerID verifying: ', result);
   return result;
 }

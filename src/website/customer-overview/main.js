@@ -46,20 +46,19 @@ function verifyCustomerIDFormat() {
 
     fetch(url, options)
         .then(response => {
-            console.log('response in fetch' + response.json());
-            // if (!response.ok) {
-            //     throw new Error('Network response was not ok');
-            // }
+            return response.json();
+        })
+        .then(data => {
+            console.log('response data:', data);
+
+            if (data == true) {
+                document.getElementById("result").innerText = "Geeignet!"
+            } else {
+                document.getElementById("result").innerText = "Nicht geeignet!"
+            }
         })
         .catch(error => {
             console.error('There was a problem with your fetch operation:', error);
-            // You can handle the error message here in case of failure
         });
-
-    if (result === true) {
-        document.getElementById("result").innerText = "Geeignet!"
-    } else {
-        document.getElementById("result").innerText = "Nicht geeignet!"
-    }
 }
 

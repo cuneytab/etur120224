@@ -81,10 +81,7 @@ fastify.get("/getCustomerById/:id", opts, async function handler(request, reply)
 fastify.get("/verifyCustomerId/:id", async function handler(request, reply) {
   const customerId = request.params.id;
   const result = verifyCustomerIDFormat(customerId);
-  console.log('webserver result: ' + result);
-  // const resultJson = {
-  //   result: result
-  // }
+
   reply.send(JSON.parse(result));
 });
 
