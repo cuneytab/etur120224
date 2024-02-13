@@ -38,7 +38,7 @@ function createCustomer() {
 function verifyCustomerIDFormat() {
     let customerId = document.getElementById('verifyCustomerIDFormat').value;
     
-    const url = 'http://127.0.0.1:3000//verifyCustomerId/' + customerId;
+    const url = 'http://127.0.0.1:3000/verifyCustomerId/' + customerId;
 
     const options = {
         method: 'GET'
@@ -46,17 +46,17 @@ function verifyCustomerIDFormat() {
 
     fetch(url, options)
         .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
+            console.log('response in fetch' + response.json());
+            // if (!response.ok) {
+            //     throw new Error('Network response was not ok');
+            // }
         })
         .catch(error => {
             console.error('There was a problem with your fetch operation:', error);
             // You can handle the error message here in case of failure
         });
 
-    console.log(result);
-    if (result == true) {
+    if (result === true) {
         document.getElementById("result").innerText = "Geeignet!"
     } else {
         document.getElementById("result").innerText = "Nicht geeignet!"

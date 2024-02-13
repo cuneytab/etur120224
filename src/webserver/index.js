@@ -82,7 +82,10 @@ fastify.get("/verifyCustomerId/:id", async function handler(request, reply) {
   const customerId = request.params.id;
   const result = verifyCustomerIDFormat(customerId);
   console.log('webserver result: ' + result);
-  reply.send(result);
+  // const resultJson = {
+  //   result: result
+  // }
+  reply.send(JSON.parse(result));
 });
 
 // Create Customer By Id
