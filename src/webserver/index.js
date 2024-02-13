@@ -18,11 +18,11 @@ console.log('Test');
 const contactPersonSchema = {
   type: 'object',
   properties: {
-    contactPersonName: { type: 'string' },
-    contactPersonEmail: { type: 'string' },
-    contactPersonPosition: { type: 'string' },
+    personName: { type: 'string' },
+    personEmail: { type: 'string' },
+    personPosition: { type: 'string' },
   },
-  required: ['contactPersonName', 'contactPersonEmail', 'contactPersonPosition']
+  required: ['personName', 'personEmail', 'personPosition']
 };
 const customerSchema = {
   schema: {
@@ -79,7 +79,12 @@ fastify.get("/getCustomerById/:id", opts, async function handler(request, reply)
 
 // Create Customer By Id
 fastify.post("/createCustomerById", customerSchema, async function handler(request, reply) {
-  createCustomer(request.body.id, request.body.name, request.body.contactPerson.contactPersonName, request.body.contactPerson.contactPersonEmail, request.body.contactPerson.contactPersonPosition, request.body.customerEmail);
+  createCustomer(request.body.customerID, 
+                 request.body.customerName, 
+                 request.body.contactPerson.personName, 
+                 request.body.contactPerson.personEmail, 
+                 request.body.contactPerson.personPosition, 
+                 request.body.customerEmail);
 });
 
 // Delete Customer By Id
