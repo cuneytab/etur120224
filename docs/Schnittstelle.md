@@ -42,12 +42,11 @@ Why: The backend is developed exclusively for a frontend
 - getUserInformation(UserId)
 - getReportById(ReportId)
 - getCustomerInformation(CustomerId)
-- getUsersFromCompany(CustomerId)
 - getAssignedCustomers(UserId)
 
 *Post Endpunkte*
 - createReport(...)
-- createUser(..)
+- createUser(...)
 - createCustomer(...)
 - createComment(ReportId, UserId, ...)
 
