@@ -49,7 +49,7 @@ Why: The backend is developed exclusively for a frontend
 - createCustomer()
 - createComment(ReportId, UserId)
 
-*Put Endpunkte*
+*Patch Endpunkte*
 - updateReport(ReportId)
 - updateComment(ReportId, UserId)
 - updateCustomer(CustomerId)
@@ -65,7 +65,6 @@ Why: The backend is developed exclusively for a frontend
 ## Services
 - UserId validation
 - DB controller
-- 
 
 ### Error Handling Konzept
 - General error handling 
