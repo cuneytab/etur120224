@@ -4,9 +4,10 @@ Why: The backend is developed exclusively for a frontend
 
 ## Datenbankmodel 
 ### User
-- *UserId* 
-- Name... (Metadata)
-- Rolemanagement: PM, Dev, Customer
+- *userId* 
+- userName
+- userEmail
+- role: PM, Dev, Customer
 
 ### Report
 - *ReportId*
@@ -27,9 +28,11 @@ Why: The backend is developed exclusively for a frontend
             }
 
 ### Kunde (Firma)
-- *CustomerId*
-- Company Name 
-- #UserId
+- *customerId*
+- customerName
+- userIds: Liste: UserId
+- #contactUserId
+- customerEmail
 
 
 ## Endpunkte
@@ -40,20 +43,19 @@ Why: The backend is developed exclusively for a frontend
 - getReportById(ReportId)
 - getCustomerInformation(CustomerId)
 - getUsersFromCompany(CustomerId)
-- getUsers(UserId)
-- getCustomers(UserId)
+- getAssignedCustomers(UserId)
 
 *Post Endpunkte*
-- createReport(UserId, CustomerId)
-- createUser(CustomerId?)
-- createCustomer()
-- createComment(ReportId, UserId)
+- createReport(...)
+- createUser(..)
+- createCustomer(...)
+- createComment(ReportId, UserId, ...)
 
-*Put Endpunkte*
-- updateReport(ReportId)
-- updateComment(ReportId, UserId)
-- updateCustomer(CustomerId)
-- updateUser(UserId)
+*Patch Endpunkte*
+- updateReport(...)
+- updateComment(ReportId, UserId, ...)
+- updateCustomer(...)
+- updateUser(...)
 
 *Delete Endpunkte*
 - deleteReport(ReportId)
@@ -63,7 +65,7 @@ Why: The backend is developed exclusively for a frontend
 
 
 ## Services
-- UserId validation
+- Id validation
 - DB controller
 - 
 

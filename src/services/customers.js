@@ -1,56 +1,46 @@
 const customer = {
-  customerID: null,
+  customerId: null,
   customerName: null,
-  contactPerson: {
-    contactPersonName: null,
-    contactPersonEmail: null,
-    contactPersonPosition: null,
-  },
+  userIds: [],
+  contactPersonId: null,
   customerEmail: null,
 };
 
 let customers = [];
 
 customers.push({
-  customerID: "ETUR-CN-34622",
-  customerName: "John Doe",
-  contactPerson: {
-    contactPersonName: "Some One",
-    contactPersonEmail: "someone@planb.com",
-    contactPersonPosition: "ceo",
-  },
-  customerEmail: "anemail@planb.com",
+  customerId: "ETUR-CN-0001",
+  customerName: "PlanA.",
+  userIds: [
+    "ETUR-UN-00001",
+    "ETUR-UN-00002",
+    "ETUR-UN-00003",
+  ],
+  contactPersonId: "ETUR-UN-00003",
+  customerEmail: "info@plana.com",
 });
 
-function getCustomerIndexById(newCustomerID) {
+// get operations
+
+function getCustomerInformation(aCustomerId) {
   const index = customers.findIndex(
-    (customer) => customer.customerID === newCustomerID
+    (customer) => customer.customerId === aCustomerId
   );
   return index;
 }
 
-function checkCustomerIdFormat(customerId) {
-  const pattern = /ETUR-CN-\w+/;
-  const isValid = pattern.test(customerId);
-  if (!isValid) {
-    console.log("No valid Customer Id Format");
-    return false;
-  } else {
-    return true;
-  }
+export function getAssignedCustomers(aUserId) {
+
 }
 
-export function getAllCustomers() {
-  return customers;
-}
+// post operations
 
 export function createCustomer(
   customerID,
   customerName,
-  contactPersonName,
-  contactPersonEmail,
-  contactPersonPosition,
-  customerEmail
+  contactPersonId,
+  customerEmail,
+  ...userIds
 ) {
   const customerIdValid = checkCustomerIdFormat(customerID);
   if (customerIdValid) {
