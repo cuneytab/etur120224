@@ -15,7 +15,7 @@ fastify.register(cors, {
 });
 
 const userProperties = {
-    userID: { type: 'string' },
+    userId: { type: 'string' },
     userName: { type: 'string' },
     email: { type: 'string' },
     role: { type: 'string' },
@@ -28,7 +28,7 @@ const userSchema = {
             properties: {
                 userProperties
             },
-            required: ['userID', 'userName', 'email', 'role']
+            required: ['userId', 'userName', 'email', 'role']
         }
     }
 };
@@ -83,6 +83,12 @@ fastify.delete("/deleteUser/:id", async function handler(request, reply) {
 });
 
 
-
+// Run the server!
+try {
+    await fastify.listen({ port: 3000 });
+  } catch (err) {
+    fastify.log.error(err);
+    process.exit(1);
+  }
 
 
