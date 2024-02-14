@@ -39,7 +39,9 @@ Why: The backend is developed exclusively for a frontend
 - getUserInformation(UserId)
 - getReportById(ReportId)
 - getCustomerInformation(CustomerId)
-- getUsersFromCaompany(CustomerId)
+- getUsersFromCompany(CustomerId)
+- getUsers(UserId)
+- getCustomers(UserId)
 
 *Post Endpunkte*
 - createReport(UserId, CustomerId)
@@ -83,6 +85,8 @@ Why: The backend is developed exclusively for a frontend
 
 *User with role PM*
 - All reports
+- All Users
+- All Customers
 
 ## Dependencys 
 - Fastify
