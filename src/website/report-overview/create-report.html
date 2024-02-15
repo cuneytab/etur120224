@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Create Report</title>
+    <script>
+
+      async function submitReport(event) {
+        event.preventDefault();
+
+        const reportData = {
+          reportId: document.getElementById("reportId").value,
+          creator: document.getElementById("creator").value,
+          customerId: document.getElementById("customerId").value,
+          category: document.getElementById("category").value,
+          description: document.getElementById("description").value,
+          assignedTo: document.getElementById("assignedTo").value,
+          createdAt: document.getElementById("createdAt").value,
+          editedAt: document.getElementById("editedAt").value,
+          closedAt: document.getElementById("closedAt").value,
+          state: document.getElementById("state").value,
+          priority: document.getElementById("priority").value,
+        };
+
+        try {
+          const response = await fetch("/createReport", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(reportData),
+          });
+
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+
+          const responseData = await response.json();
+          console.log("Report successfully created:", responseData);
+          alert("Report successfully created!");
+
+        } catch (error) {
+          console.error("Error during fetch:", error);
+          alert("Failed to create report.");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h2>Create a New Report</h2>
+
+    <form id="createReportForm" onsubmit="submitReport(event)">
+      <input type="text" id="reportId" placeholder="Report ID" required /><br />
+      <input type="text" id="creator" placeholder="Creator" required /><br />
+      <input
+        type="text"
+        id="customerId"
+        placeholder="Customer ID"
+        required
+      /><br />
+      <input type="text" id="category" placeholder="Category" required /><br />
+      <textarea id="description" placeholder="Description" required></textarea
+      ><br />
+      <input
+        type="text"
+        id="assignedTo"
+        placeholder="Assigned To"
+        required
+      /><br />
+      <input
+        type="text"
+        id="createdAt"
+        placeholder="Created At"
+        required
+      /><br />
+      <input type="text" id="editedAt" placeholder="Edited At" /><br />
+      <input type="text" id="closedAt" placeholder="Closed At" /><br />
+      <input type="text" id="state" placeholder="State" required /><br />
+      <input type="text" id="priority" placeholder="Priority" required /><br />
+      <button type="submit">Create Report</button>
+    </form>
+  </body>
+</html>

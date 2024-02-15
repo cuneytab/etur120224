@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Report Display</title>
+    <style type="text/css">
+      html,
+      #page {
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        color: #959595;
+        font: normal 12px/2em Sans-Serif;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: darkred;
+      }
+      #page {
+        background: #fff;
+      }
+      #header,
+      #footer,
+      #top-nav,
+      #content,
+      #content #contentbar,
+      #content #sidebar {
+        margin: 0;
+        padding: 0;
+      }
+
+
+      /* Feature */
+      .feature {
+        background: red;
+        padding: 18px;
+      }
+      .feature-inner {
+        margin: auto;
+        width: 970px;
+      }
+      .feature-inner h1 {
+        color: #f8dbdb;
+        font-size: 32px;
+      }
+
+      /* Content */
+      #content-inner {
+        margin: 0 auto;
+        padding: 10px 0;
+        width: 970px;
+        background: #fff;
+      }
+
+
+      /* Footer */
+      #footer {
+        background: #fff;
+      }
+      #footer-inner {
+        margin: auto;
+        text-align: center;
+        padding: 12px;
+        width: 922px;
+      }
+      #footer a {
+        color: red;
+        text-decoration: none;
+      }
+
+      .clr {
+        clear: both;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        font-size: 0px;
+        line-height: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="page">
+     
+      <div class="feature">
+        <div class="feature-inner">
+            <span>
+                <h1>User Report List</h1>
+            </span>
+        </div>
+      </div>
+
+      <div id="content">
+        <div id="content-inner">
+
+          <div id="reportsContainer">
+            <table id="reportsTable">
+              <thead>
+                <tr>
+                  <th>Report ID</th>
+                  <th>Creator</th>
+                  <th>Customer ID</th>
+                  <th>Category</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <a href="./create-report.html">Create Report</a>
+
+
+          <div class="clr"></div>
+        </div>
+      </div>
+
+      <footer id="footer">
+        <div id="footer-inner">
+          Hier Footer
+          <div class="clr"></div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      function fetchReportsByUserId(userId) {
+        fetch(`http://localhost:3000/getReportFromUser/${userId}`)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            const tableBody = document
+              .getElementById("reportsTable")
+              .getElementsByTagName("tbody")[0];
+            tableBody.innerHTML = "";
+
+            data.forEach((report) => {
+              let row = tableBody.insertRow();
+              let cellReportId = row.insertCell(0);
+              let cellCreator = row.insertCell(1);
+              let cellCustomerId = row.insertCell(2);
+              let cellCategory = row.insertCell(3);
+              let cellDescription = row.insertCell(4);
+
+              cellReportId.innerHTML = report.reportId;
+              cellCreator.innerHTML = report.creator;
+              cellCustomerId.innerHTML = report.customerId;
+              cellCategory.innerHTML = report.category;
+              cellDescription.innerHTML = report.description;
+            });
+          })
+          .catch((error) => {
+            console.error("Error during fetch:", error);
+          });
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        fetchReportsByUserId("ETUR-UN-00001");
+      });
+    </script>
+  </body>
+</html>

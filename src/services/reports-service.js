@@ -1,9 +1,14 @@
+import {
+  checkReportIdFormat,
+  checkCommentIdFormat,
+} from "./validationService.js";
 const report = {
   reportId: null,
   creator: null,
   customerId: null,
   category: null,
   description: null,
+  owner: null,
   assignedTo: null,
   createdAt: null,
   editedAt: null,
@@ -20,13 +25,14 @@ const report = {
 
 let reports = [];
 
-function createReport() {
+function createTestReport() {
   reports.push({
     reportId: "ETUR-RP-00001",
     creator: "John Doe",
     customerId: "ETUR-CN-34622",
     category: "Bug",
     description: "some description",
+    owner: "ETUR-UN-00001",
     assignedTo: "ETUR-UN-00001",
     createdAt: "2021-10-20",
     editedAt: "2021-10-20",
@@ -39,10 +45,19 @@ function createReport() {
         userId: "ETUR-UN-00001",
         date: "2021-10-20",
         subject: "some comment subject",
+        },
+        {
+        commentId: "ETUR-CM-00001",
+        userId: "ETUR-UN-00001",
+        date: "2021-10-20",
+        subject: "second comment subject",
       },
     ],
   });
 }
+
+createTestReport();
+createTestReport();
 
 export function getReportsByCustomerId(customerId) {
   const filteredReports = reports.filter(
@@ -69,6 +84,7 @@ export function createReport(
   customerId,
   category,
   description,
+  owner,
   assignedTo,
   createdAt,
   editedAt,
@@ -76,34 +92,47 @@ export function createReport(
   state,
   priority
 ) {
-  reports.push({
-    reportId,
-    creator,
-    customerId,
-    category,
-    description,
-    assignedTo,
-    createdAt,
-    editedAt,
-    closedAt,
-    state,
-    priority,
-    comments: [{}],
-  });
-  return getReportByReportId(reportId);
+  console.log("reportId: ", reportId);
+  const reportIdValid = checkReportIdFormat(reportId);
+  if (reportIdValid) {
+    reports.push({
+      reportId,
+      creator,
+      customerId,
+      category,
+      description,
+      owner,
+      assignedTo,
+      createdAt,
+      editedAt,
+      closedAt,
+      state,
+      priority,
+      comments: [{}],
+    });
+    return getReportByReportId(reportId);
+  } else {
+    return "No valid Report Id Format";
+  }
 }
 
 export function createComment(reportId, commentId, userId, date, subject) {
-  const reportindex = reports.findIndex(
-    (report) => report.reportId === reportId
-  );
-  reports[reportindex].comments.push({
-    commentId,
-    userId,
-    date,
-    subject,
-  });
-  return getReportByReportId(reportId);
+  const commentIdValid = checkCommentIdFormat(commentId);
+  const reportIdValid = checkReportIdFormat(reportId);
+  if (commentIdValid && reportIdValid) {
+    const reportindex = reports.findIndex(
+      (report) => report.reportId === reportId
+    );
+    reports[reportindex].comments.push({
+      commentId,
+      userId,
+      date,
+      subject,
+    });
+    return getReportByReportId(reportId);
+  } else {
+    return "No valid Comment or Result Id Format";
+  }
 }
 
 export function patchReport(
@@ -163,9 +192,31 @@ export function patchComment(commentId, userId, date, subject) {
 }
 
 export function deleteReport(reportId) {
-  const reportindex = reports.findIndex(
+  const reportIndex = reports.findIndex(
     (report) => report.reportId === reportId
   );
-  reports.splice(reportindex, 1);
+
+  if (reportIndex === -1) {
+    throw new Error(`Report with ID ${reportId} not found.`);
+  }
+
+  reports.splice(reportIndex, 1);
 }
 
+export function deleteComment(reportId, commentId) {
+  const reportIndex = reports.findIndex(
+    (report) => report.reportId === reportId
+  );
+  if (reportIndex === -1) {
+    throw new Error(`Report with ID ${reportId} not found.`);
+  }
+  const commentIndex = reports[reportIndex].comments.findIndex(
+    (comment) => comment.commentId === commentId
+  );
+  if (commentIndex === -1) {
+    throw new Error(
+      `Comment with ID ${commentId} not found in report with ID ${reportId}.`
+    );
+  }
+  reports[reportIndex].comments.splice(commentIndex, 1);
+}
